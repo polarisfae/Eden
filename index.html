@@ -1,0 +1,233 @@
+<!doctype html>
+<html lang="en">
+<head>
+<script>document.documentElement.classList.add("js")</script>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Eden — a digital garden</title>
+<meta name="description" content="Eden is a digital garden: a small plot of thoughts, notes, photos, and recipes, planted instead of posted." />
+<link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 64 64%22><text y=%2252%22 font-size=%2256%22>🌿</text></svg>" />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&family=Caveat:wght@500;600&family=Nunito:wght@400;600;700&display=swap" rel="stylesheet" />
+<link rel="stylesheet" href="assets/css/garden.css" />
+</head>
+<body>
+
+<svg style="display:none" aria-hidden="true">
+  <symbol id="icon-wisteria" viewBox="0 0 64 170">
+    <path d="M32 0 C30 20 34 32 32 50 C30 70 34 84 32 100 C31 116 33 128 32 145" stroke="#6b6a3c" stroke-width="2" fill="none" stroke-linecap="round"/>
+    <g fill="#eeccca">
+      <ellipse cx="14" cy="18" rx="9" ry="6"/><ellipse cx="50" cy="18" rx="9" ry="6"/><ellipse cx="32" cy="14" rx="8" ry="6"/>
+    </g>
+    <g fill="#e3a9a6">
+      <ellipse cx="16" cy="38" rx="8.5" ry="6"/><ellipse cx="48" cy="38" rx="8.5" ry="6"/><ellipse cx="32" cy="34" rx="7.5" ry="5.5"/>
+    </g>
+    <g fill="#b97d7b">
+      <ellipse cx="18" cy="58" rx="8" ry="5.6"/><ellipse cx="46" cy="58" rx="8" ry="5.6"/><ellipse cx="32" cy="54" rx="7" ry="5"/>
+    </g>
+    <g fill="#e3a9a6">
+      <ellipse cx="19" cy="78" rx="7.2" ry="5.2"/><ellipse cx="45" cy="78" rx="7.2" ry="5.2"/><ellipse cx="32" cy="74" rx="6.4" ry="4.6"/>
+    </g>
+    <g fill="#eeccca">
+      <ellipse cx="21" cy="98" rx="6.2" ry="4.6"/><ellipse cx="43" cy="98" rx="6.2" ry="4.6"/><ellipse cx="32" cy="94" rx="5.6" ry="4"/>
+    </g>
+    <g fill="#f6e4e2">
+      <ellipse cx="23" cy="116" rx="5" ry="3.8"/><ellipse cx="41" cy="116" rx="5" ry="3.8"/><ellipse cx="32" cy="112" rx="4.6" ry="3.4"/>
+    </g>
+    <g fill="#faf1ef">
+      <ellipse cx="27" cy="132" rx="3.6" ry="3"/><ellipse cx="37" cy="132" rx="3.6" ry="3"/>
+    </g>
+  </symbol>
+  <symbol id="icon-bloom" viewBox="0 0 64 64">
+    <g fill="#eeccca">
+      <ellipse cx="32" cy="16" rx="11" ry="15"/><ellipse cx="32" cy="48" rx="11" ry="15"/>
+      <ellipse cx="16" cy="32" rx="15" ry="11"/><ellipse cx="48" cy="32" rx="15" ry="11"/>
+    </g>
+    <circle cx="32" cy="32" r="9" fill="#b97d7b"/>
+    <circle cx="32" cy="32" r="4" fill="#f6e4e2"/>
+  </symbol>
+  <symbol id="icon-sprout" viewBox="0 0 64 64">
+    <path d="M32 58 V30" stroke="#7c8161" stroke-width="3" stroke-linecap="round" fill="none"/>
+    <path d="M32 34 C18 30 12 18 14 8 C26 10 34 20 32 34 Z" fill="#a7ac86"/>
+    <path d="M32 30 C46 26 52 14 50 6 C38 8 30 18 32 30 Z" fill="#7c8161"/>
+  </symbol>
+  <symbol id="icon-branch" viewBox="0 0 64 64">
+    <path d="M8 54 C22 46 30 38 34 22" stroke="#575527" stroke-width="3" fill="none" stroke-linecap="round"/>
+    <g fill="#928e5e">
+      <ellipse cx="14" cy="46" rx="7" ry="4" transform="rotate(-30 14 46)"/>
+      <ellipse cx="22" cy="38" rx="7" ry="4" transform="rotate(-20 22 38)"/>
+      <ellipse cx="29" cy="29" rx="6.5" ry="3.6" transform="rotate(-10 29 29)"/>
+    </g>
+    <g fill="#a7ac86">
+      <ellipse cx="36" cy="18" rx="9" ry="12" transform="rotate(20 36 18)"/>
+      <ellipse cx="44" cy="10" rx="7" ry="10" transform="rotate(35 44 10)"/>
+    </g>
+  </symbol>
+  <symbol id="icon-frame" viewBox="0 0 64 64">
+    <rect x="8" y="6" width="48" height="48" rx="3" fill="#fdfaf4" stroke="#ddd3c9" stroke-width="2"/>
+    <rect x="14" y="12" width="36" height="30" fill="#f2f4ec"/>
+    <circle cx="32" cy="27" r="7" fill="#eeccca"/>
+    <circle cx="32" cy="27" r="3" fill="#b97d7b"/>
+    <path d="M14 42 L24 32 L34 40 L42 30 L50 42 Z" fill="#a7ac86" opacity="0.7"/>
+  </symbol>
+  <symbol id="icon-root" viewBox="0 0 64 64">
+    <path d="M32 26 C34 40 30 50 32 60" stroke="#b97d7b" stroke-width="4" fill="none" stroke-linecap="round"/>
+    <path d="M32 34 C26 42 24 48 20 50" stroke="#b97d7b" stroke-width="2.5" fill="none" stroke-linecap="round"/>
+    <path d="M32 40 C38 46 40 50 44 54" stroke="#b97d7b" stroke-width="2.5" fill="none" stroke-linecap="round"/>
+    <path d="M32 26 C16 24 10 12 12 4 C24 6 32 14 32 26 Z" fill="#7c8161"/>
+    <path d="M32 26 C48 24 54 12 52 4 C40 6 32 14 32 26 Z" fill="#a7ac86"/>
+  </symbol>
+  <symbol id="icon-leaf" viewBox="0 0 32 16">
+    <path d="M2 8 C10 -2 22 -2 30 8 C22 18 10 18 2 8 Z" fill="#928e5e"/>
+    <path d="M2 8 L30 8" stroke="#575527" stroke-width="1"/>
+  </symbol>
+  <symbol id="icon-petal" viewBox="0 0 20 20">
+    <path d="M10 2 C16 2 18 8 10 18 C2 8 4 2 10 2 Z" fill="#eeccca"/>
+  </symbol>
+  <symbol id="icon-moongate" viewBox="0 0 150 150">
+    <circle cx="75" cy="75" r="70" fill="#f2f4ec" opacity="0.6"/>
+    <circle cx="75" cy="75" r="70" fill="none" stroke="#928e5e" stroke-width="6"/>
+    <path d="M75 145 V90" stroke="#575527" stroke-width="4" stroke-linecap="round"/>
+    <circle cx="75" cy="80" r="22" fill="#a7ac86"/>
+    <circle cx="58" cy="95" r="14" fill="#928e5e"/>
+    <circle cx="92" cy="98" r="16" fill="#7c8161"/>
+    <circle cx="60" cy="60" r="5" fill="#eeccca"/>
+    <circle cx="88" cy="55" r="4" fill="#eeccca"/>
+    <circle cx="75" cy="45" r="4" fill="#e3a9a6"/>
+  </symbol>
+  <symbol id="icon-tree-round" viewBox="0 0 160 220">
+    <path d="M78 220 V140" stroke="#575527" stroke-width="8" stroke-linecap="round"/>
+    <path d="M78 170 C60 160 45 165 40 175" stroke="#575527" stroke-width="5" fill="none" stroke-linecap="round"/>
+    <path d="M80 155 C100 148 112 155 118 163" stroke="#575527" stroke-width="5" fill="none" stroke-linecap="round"/>
+    <circle cx="78" cy="90" r="60" fill="#a7ac86"/>
+    <circle cx="40" cy="120" r="42" fill="#928e5e"/>
+    <circle cx="118" cy="115" r="46" fill="#7c8161" opacity="0.9"/>
+    <circle cx="78" cy="60" r="36" fill="#b6bb95"/>
+  </symbol>
+</svg>
+
+<nav class="garden-nav">
+  <div class="wrap">
+    <a class="brand" href="#top">
+      <svg width="22" height="22" viewBox="0 0 64 64"><use href="#icon-sprout"/></svg>
+      Eden
+    </a>
+    <ul>
+      <li><a href="#about">How it grows</a></li>
+      <li><a href="#beds">The garden</a></li>
+      <li><a href="#footer">Visit again</a></li>
+    </ul>
+  </div>
+</nav>
+
+<header class="hero" id="top">
+  <div class="wisteria-row">
+    <svg class="w1" width="70" viewBox="0 0 64 170"><use href="#icon-wisteria"/></svg>
+    <svg class="w2" width="46" viewBox="0 0 64 170"><use href="#icon-wisteria"/></svg>
+    <svg class="w3" width="80" viewBox="0 0 64 170"><use href="#icon-wisteria"/></svg>
+    <svg class="w4" width="50" viewBox="0 0 64 170"><use href="#icon-wisteria"/></svg>
+    <svg class="w5" width="66" viewBox="0 0 64 170"><use href="#icon-wisteria"/></svg>
+  </div>
+
+  <div class="petals" aria-hidden="true">
+    <svg class="petal" style="left:6%;width:12px;animation-duration:11s,4s;animation-delay:0s,0s"><use href="#icon-petal"/></svg>
+    <svg class="petal" style="left:18%;width:16px;animation-duration:14s,5s;animation-delay:2s,1s"><use href="#icon-petal"/></svg>
+    <svg class="petal" style="left:30%;width:10px;animation-duration:9s,3.5s;animation-delay:4s,0.5s"><use href="#icon-petal"/></svg>
+    <svg class="petal" style="left:45%;width:14px;animation-duration:13s,4.5s;animation-delay:1s,2s"><use href="#icon-petal"/></svg>
+    <svg class="petal" style="left:58%;width:11px;animation-duration:10s,4s;animation-delay:3s,1.5s"><use href="#icon-petal"/></svg>
+    <svg class="petal" style="left:70%;width:15px;animation-duration:12s,5s;animation-delay:5s,0s"><use href="#icon-petal"/></svg>
+    <svg class="petal" style="left:82%;width:12px;animation-duration:11s,4s;animation-delay:2.5s,2.5s"><use href="#icon-petal"/></svg>
+    <svg class="petal" style="left:92%;width:13px;animation-duration:15s,4.5s;animation-delay:0.5s,1s"><use href="#icon-petal"/></svg>
+  </div>
+
+  <div class="hero-content">
+    <span class="eyebrow">welcome to</span>
+    <h1>Eden</h1>
+    <p class="tagline">Not a blog — a digital garden. A small plot of thoughts, notes, photos, and recipes, planted instead of posted, and left to grow at their own pace.</p>
+    <svg class="moongate" viewBox="0 0 150 150"><use href="#icon-moongate"/></svg>
+  </div>
+</header>
+
+<main>
+  <section class="intro reveal" id="about">
+    <span class="eyebrow">how it grows</span>
+    <h2>Not a blog. A garden.</h2>
+    <p>Most blogs are timelines — newest on top, everything older buried beneath. Here, every page is a small living thing: a thought, an interest, a note, a photo, a recipe — planted on its own, tended when it's ready, and left to grow at its own pace. Some entries are seedlings, barely a sentence long. Others have had years to climb a trellis. Wander the beds below, or just follow whatever's blooming.</p>
+  </section>
+
+  <section id="beds">
+    <div class="wrap">
+      <h2 class="section-title reveal">Wander the beds</h2>
+      <p class="section-sub reveal">five plots, five kinds of growing</p>
+      <div class="beds">
+        <a class="bed pink reveal" href="pages/thought-example.html">
+          <svg class="icon" viewBox="0 0 64 64"><use href="#icon-bloom"/></svg>
+          <h3>Blooms</h3>
+          <p>Thoughts &amp; essays that took a while to open up.</p>
+          <span class="count">7 blooming</span>
+        </a>
+        <a class="bed sage reveal" href="pages/note-example.html">
+          <svg class="icon" viewBox="0 0 64 64"><use href="#icon-sprout"/></svg>
+          <h3>Seedlings</h3>
+          <p>Quick notes and half-formed ideas, still rooting.</p>
+          <span class="count">14 sprouted</span>
+        </a>
+        <a class="bed deep reveal" href="pages/interest-example.html">
+          <svg class="icon" viewBox="0 0 64 64"><use href="#icon-branch"/></svg>
+          <h3>Branches</h3>
+          <p>Interests and small obsessions, followed as far as they lead.</p>
+          <span class="count">5 branches</span>
+        </a>
+        <a class="bed fog reveal" href="pages/photo-example.html">
+          <svg class="icon" viewBox="0 0 64 64"><use href="#icon-frame"/></svg>
+          <h3>Snapshots</h3>
+          <p>Photos worth pressing between the pages.</p>
+          <span class="count">22 kept</span>
+        </a>
+        <a class="bed mauve reveal" href="pages/recipe-example.html">
+          <svg class="icon" viewBox="0 0 64 64"><use href="#icon-root"/></svg>
+          <h3>Roots</h3>
+          <p>Recipes — the kind passed along, not just followed.</p>
+          <span class="count">9 planted</span>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <div class="scene reveal">
+    <p class="caption">still growing, always — come back later</p>
+    <svg viewBox="0 0 1200 400" preserveAspectRatio="xMidYMax slice" aria-hidden="true">
+      <path d="M0 400 C200 340 400 380 600 350 C800 320 1000 360 1200 330 L1200 400 Z" fill="#eef1e6"/>
+      <path d="M0 400 C250 372 450 400 700 382 C900 368 1050 392 1200 372 L1200 400 Z" fill="#dfe4cf"/>
+
+      <use href="#icon-tree-round" x="6" y="82" width="176" height="240"/>
+      <use href="#icon-tree-round" x="1000" y="60" width="200" height="260"/>
+
+      <path d="M60 396 C300 410 380 380 600 392 C820 404 900 380 1140 394" stroke="#b6a37e" stroke-width="3" stroke-dasharray="2 10" fill="none" stroke-linecap="round" opacity="0.8"/>
+
+      <use href="#icon-moongate" x="516" y="280" width="170" height="170"/>
+
+      <g opacity="0.9">
+        <circle cx="140" cy="392" r="4" fill="#eeccca"/>
+        <circle cx="220" cy="397" r="3" fill="#b97d7b"/>
+        <circle cx="340" cy="393" r="3.5" fill="#eeccca"/>
+        <circle cx="880" cy="396" r="4" fill="#e3a9a6"/>
+        <circle cx="960" cy="392" r="3" fill="#eeccca"/>
+        <circle cx="1060" cy="397" r="3.5" fill="#b97d7b"/>
+      </g>
+    </svg>
+  </div>
+</main>
+
+<footer class="garden-footer" id="footer">
+  <div class="leaf-divider">
+    <svg width="60" height="30" viewBox="0 0 32 16"><use href="#icon-leaf"/></svg>
+  </div>
+  <span class="sig">planted with care</span>
+  <p>Eden — a digital garden · est. 2026</p>
+</footer>
+
+<script src="assets/js/garden.js"></script>
+</body>
+</html>
