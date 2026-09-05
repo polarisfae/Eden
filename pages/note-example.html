@@ -12,7 +12,17 @@
 </head>
 <body>
 
+<div class="mist-bg" aria-hidden="true">
+  <span style="--c:#aed6e0; top:-12%; right:-8%; width:40vw; height:40vw; animation-delay:-5s;"></span>
+  <span style="--c:#a7ac86; top:14%; left:-10%; width:34vw; height:34vw; animation-delay:-16s;"></span>
+  <span style="--c:#f3dd9e; bottom:-8%; right:12%; width:32vw; height:32vw; animation-delay:-9s;"></span>
+  <span style="--c:#f2b0c4; bottom:4%; left:8%; width:28vw; height:28vw; animation-delay:-1s;"></span>
+</div>
+
 <svg style="display:none" aria-hidden="true">
+  <symbol id="icon-sparkle" viewBox="0 0 20 20">
+    <path d="M10 0 C10 6 14 10 20 10 C14 10 10 14 10 20 C10 14 6 10 0 10 C6 10 10 6 10 0 Z" fill="currentColor"/>
+  </symbol>
   <symbol id="icon-bloom" viewBox="0 0 64 64">
     <g fill="#eeccca">
       <ellipse cx="32" cy="16" rx="11" ry="15"/><ellipse cx="32" cy="48" rx="11" ry="15"/>
@@ -75,7 +85,11 @@
 <header class="plant-header">
   <div class="wrap">
     <a class="breadcrumb" href="../index.html">← back to the garden</a>
-    <svg class="icon" viewBox="0 0 64 64"><use href="#icon-sprout"/></svg>
+    <div style="position:relative; display:block; width:fit-content; margin:0 auto;">
+      <svg class="icon" viewBox="0 0 64 64"><use href="#icon-sprout"/></svg>
+      <svg class="sparkle" viewBox="0 0 20 20" width="16" height="16" style="top:-6px; right:-14px; color:var(--sky-deep); animation-delay:-0.6s;"><use href="#icon-sparkle"/></svg>
+      <svg class="sparkle" viewBox="0 0 20 20" width="11" height="11" style="bottom:2px; left:-14px; color:var(--butter-deep); animation-delay:-1.8s;"><use href="#icon-sparkle"/></svg>
+    </div>
     <span class="eyebrow">a seedling</span>
     <h1>gardens don't need conclusions</h1>
     <p class="plant-meta">

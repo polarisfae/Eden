@@ -18,6 +18,17 @@
   --ink-soft: #756a54;
   --paper: #fdfaf4;
 
+  /* whimsical accent colors — used sparingly for the mist background,
+     bed cards, sparkles, and confetti petals */
+  --lavender: #cdb7e0;
+  --lavender-deep: #ab8ec9;
+  --butter: #f3dd9e;
+  --butter-deep: #e7bf5f;
+  --sky: #aed6e0;
+  --sky-deep: #85bcca;
+  --coral: #f2b09b;
+  --coral-deep: #e28a6c;
+
   --font-display: "Cormorant Garamond", "Iowan Old Style", Georgia, serif;
   --font-script: "Caveat", "Segoe Script", cursive;
   --font-body: "Nunito Sans", "Nunito", -apple-system, sans-serif;
@@ -41,11 +52,42 @@ body {
   color: var(--ink);
   background-color: var(--cream);
   background-image:
-    radial-gradient(ellipse at 15% 0%, rgba(233, 210, 205, 0.35), transparent 55%),
-    radial-gradient(ellipse at 85% 10%, rgba(167, 172, 134, 0.25), transparent 50%),
     url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='120' height='120'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/><feColorMatrix type='saturate' values='0'/></filter><rect width='100%25' height='100%25' filter='url(%23n)' opacity='0.035'/></svg>");
   overflow-x: hidden;
   line-height: 1.65;
+}
+
+/* ---------------- Pigment-mist background ----------------
+   A dreamy wash of soft, blurred color blobs drifting slowly
+   behind the whole site — the "pigment mist" ambient layer. */
+
+.mist-bg {
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+  overflow: hidden;
+}
+
+.mist-bg span {
+  position: absolute;
+  display: block;
+  border-radius: 50%;
+  background: var(--c);
+  filter: blur(min(9vw, 90px));
+  opacity: 0.4;
+  animation: mist-drift 30s ease-in-out infinite;
+}
+
+@keyframes mist-drift {
+  0%, 100% { transform: translate(0, 0) scale(1); }
+  33% { transform: translate(2.5%, -3%) scale(1.06); }
+  66% { transform: translate(-2%, 2.5%) scale(0.97); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .mist-bg span {
+    animation: none;
+  }
 }
 
 a {
@@ -120,9 +162,12 @@ h1, h2, h3, h4 {
 }
 
 .hero h1 {
+  position: relative;
+  display: block;
+  width: fit-content;
+  margin: 0 auto 0.15em;
   font-size: clamp(3rem, 8vw, 5.2rem);
   letter-spacing: 0.04em;
-  margin-bottom: 0.15em;
 }
 
 .hero .tagline {
@@ -165,6 +210,17 @@ h1, h2, h3, h4 {
 @keyframes drift {
   0%, 100% { margin-left: 0; }
   50% { margin-left: 40px; }
+}
+
+/* twinkling sparkles */
+.sparkle {
+  position: absolute;
+  animation: twinkle 3.4s ease-in-out infinite;
+}
+
+@keyframes twinkle {
+  0%, 100% { opacity: 0.25; transform: scale(0.75) rotate(0deg); }
+  50% { opacity: 1; transform: scale(1.05) rotate(12deg); }
 }
 
 /* ---------------- Nav ---------------- */
@@ -299,11 +355,11 @@ h1, h2, h3, h4 {
   color: var(--koubai);
 }
 
-.bed.pink   { background: linear-gradient(180deg, #fff 0%, #fdf1ef 100%); }
-.bed.sage   { background: linear-gradient(180deg, #fff 0%, #f2f4ec 100%); }
-.bed.deep   { background: linear-gradient(180deg, #fff 0%, #eef1e6 100%); }
-.bed.fog    { background: linear-gradient(180deg, #fff 0%, #f6f1ea 100%); }
-.bed.mauve  { background: linear-gradient(180deg, #fff 0%, #f3ede3 100%); }
+.bed.pink   { background: linear-gradient(160deg, #fff 0%, #fbdfe6 100%); border-color: rgba(226, 138, 161, 0.3); }
+.bed.sage   { background: linear-gradient(160deg, #fff 0%, #e9f0da 100%); border-color: rgba(124, 129, 97, 0.3); }
+.bed.deep   { background: linear-gradient(160deg, #fff 0%, #fbe2d5 100%); border-color: rgba(226, 138, 108, 0.3); }
+.bed.fog    { background: linear-gradient(160deg, #fff 0%, #dcf0f2 100%); border-color: rgba(133, 188, 202, 0.35); }
+.bed.mauve  { background: linear-gradient(160deg, #fff 0%, #f6ecc4 100%); border-color: rgba(231, 191, 95, 0.35); }
 
 /* ---------------- Garden scene divider ---------------- */
 
@@ -465,7 +521,7 @@ h1, h2, h3, h4 {
 .gallery-frame .swatch {
   height: 240px;
   border-radius: 2px;
-  background: linear-gradient(135deg, var(--berry), var(--sage));
+  background: linear-gradient(135deg, var(--berry) 0%, var(--lavender) 32%, var(--butter) 62%, var(--sky) 100%);
   display: flex;
   align-items: center;
   justify-content: center;
