@@ -1,0 +1,551 @@
+/* ============================================================
+   Eden — a digital garden
+   Palette: Warm Fog, Berry Good, Usu Koubai Blossom,
+            Meadow Mauve, Soldier Green, Lucent Sage
+   ============================================================ */
+
+:root {
+  --warm-fog: #ddd3c9;
+  --cream: #faf6ef;
+  --berry: #eeccca;
+  --berry-deep: #e3a9a6;
+  --koubai: #b97d7b;
+  --mauve: #928e5e;
+  --soldier: #575527;
+  --sage: #a7ac86;
+  --sage-deep: #7c8161;
+  --ink: #4a4331;
+  --ink-soft: #756a54;
+  --paper: #fdfaf4;
+
+  --font-display: "Cormorant Garamond", "Iowan Old Style", Georgia, serif;
+  --font-script: "Caveat", "Segoe Script", cursive;
+  --font-body: "Nunito Sans", "Nunito", -apple-system, sans-serif;
+
+  --radius-organic: 255px 15px 225px 15px / 15px 225px 15px 255px;
+  --shadow-soft: 0 10px 30px -12px rgba(87, 85, 39, 0.25);
+  --shadow-lift: 0 18px 40px -14px rgba(87, 85, 39, 0.35);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  font-family: var(--font-body);
+  color: var(--ink);
+  background-color: var(--cream);
+  background-image:
+    radial-gradient(ellipse at 15% 0%, rgba(233, 210, 205, 0.35), transparent 55%),
+    radial-gradient(ellipse at 85% 10%, rgba(167, 172, 134, 0.25), transparent 50%),
+    url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='120' height='120'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/><feColorMatrix type='saturate' values='0'/></filter><rect width='100%25' height='100%25' filter='url(%23n)' opacity='0.035'/></svg>");
+  overflow-x: hidden;
+  line-height: 1.65;
+}
+
+a {
+  color: var(--koubai);
+  text-decoration-color: rgba(185, 125, 123, 0.4);
+}
+
+a:hover {
+  color: var(--soldier);
+}
+
+h1, h2, h3, h4 {
+  font-family: var(--font-display);
+  font-weight: 600;
+  color: var(--soldier);
+  margin: 0 0 0.4em;
+}
+
+.eyebrow {
+  font-family: var(--font-script);
+  font-size: 1.35rem;
+  color: var(--koubai);
+  display: inline-block;
+  margin-bottom: 0.25em;
+}
+
+.wrap {
+  max-width: 1080px;
+  margin: 0 auto;
+  padding: 0 28px;
+}
+
+/* ---------------- Wisteria header / hero ---------------- */
+
+.hero {
+  position: relative;
+  padding-top: 150px;
+  padding-bottom: 90px;
+  text-align: center;
+  overflow: hidden;
+}
+
+.wisteria-row {
+  position: absolute;
+  top: -18px;
+  left: 0;
+  right: 0;
+  display: flex;
+  justify-content: space-between;
+  padding: 0 2%;
+  pointer-events: none;
+  z-index: 1;
+}
+
+.wisteria-row svg {
+  animation: sway 6s ease-in-out infinite;
+  transform-origin: top center;
+}
+.wisteria-row .w2 { animation-delay: -1.2s; }
+.wisteria-row .w3 { animation-delay: -2.6s; }
+.wisteria-row .w4 { animation-delay: -3.8s; }
+.wisteria-row .w5 { animation-delay: -0.6s; }
+
+@keyframes sway {
+  0%, 100% { transform: rotate(-1.4deg); }
+  50% { transform: rotate(1.6deg); }
+}
+
+.hero-content {
+  position: relative;
+  z-index: 2;
+}
+
+.hero h1 {
+  font-size: clamp(3rem, 8vw, 5.2rem);
+  letter-spacing: 0.04em;
+  margin-bottom: 0.15em;
+}
+
+.hero .tagline {
+  font-size: 1.15rem;
+  color: var(--ink-soft);
+  max-width: 42ch;
+  margin: 0 auto;
+}
+
+.moongate {
+  margin: 46px auto 0;
+  width: 150px;
+}
+
+/* falling petals */
+.petals {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  overflow: hidden;
+  z-index: 1;
+}
+
+.petal {
+  position: absolute;
+  top: -5%;
+  width: 14px;
+  height: 14px;
+  opacity: 0.85;
+  animation-name: fall, drift;
+  animation-timing-function: linear, ease-in-out;
+  animation-iteration-count: infinite, infinite;
+}
+
+@keyframes fall {
+  from { transform: translateY(-10vh) rotate(0deg); }
+  to   { transform: translateY(110vh) rotate(340deg); }
+}
+
+@keyframes drift {
+  0%, 100% { margin-left: 0; }
+  50% { margin-left: 40px; }
+}
+
+/* ---------------- Nav ---------------- */
+
+.garden-nav {
+  position: sticky;
+  top: 0;
+  z-index: 20;
+  background: rgba(250, 246, 239, 0.86);
+  backdrop-filter: blur(6px);
+  border-bottom: 1px solid rgba(146, 142, 94, 0.25);
+}
+
+.garden-nav .wrap {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-top: 14px;
+  padding-bottom: 14px;
+}
+
+.brand {
+  font-family: var(--font-display);
+  font-size: 1.4rem;
+  color: var(--soldier);
+  text-decoration: none;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.garden-nav ul {
+  list-style: none;
+  display: flex;
+  gap: 26px;
+  margin: 0;
+  padding: 0;
+}
+
+.garden-nav a {
+  text-decoration: none;
+  color: var(--ink);
+  font-size: 0.98rem;
+  border-bottom: 2px solid transparent;
+  padding-bottom: 3px;
+  transition: border-color 0.25s ease, color 0.25s ease;
+}
+
+.garden-nav a:hover {
+  color: var(--koubai);
+  border-color: var(--berry-deep);
+}
+
+/* ---------------- Intro ---------------- */
+
+.intro {
+  text-align: center;
+  max-width: 620px;
+  margin: 0 auto 70px;
+}
+
+.intro p {
+  color: var(--ink-soft);
+  font-size: 1.08rem;
+}
+
+/* ---------------- Garden beds ---------------- */
+
+.section-title {
+  text-align: center;
+  margin-bottom: 12px;
+}
+
+.section-sub {
+  text-align: center;
+  color: var(--ink-soft);
+  margin-bottom: 46px;
+  font-style: italic;
+}
+
+.beds {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+  gap: 26px;
+  margin-bottom: 90px;
+}
+
+.bed {
+  position: relative;
+  background: var(--paper);
+  border-radius: 26px 26px 60px 60px;
+  padding: 34px 24px 28px;
+  text-align: center;
+  text-decoration: none;
+  color: var(--ink);
+  box-shadow: var(--shadow-soft);
+  border: 1px solid rgba(146, 142, 94, 0.18);
+  transition: transform 0.35s ease, box-shadow 0.35s ease;
+  display: block;
+}
+
+.bed:hover {
+  transform: translateY(-8px) rotate(-0.6deg);
+  box-shadow: var(--shadow-lift);
+}
+
+.bed .icon {
+  width: 64px;
+  height: 64px;
+  margin: 0 auto 16px;
+  transition: transform 0.35s ease;
+}
+
+.bed:hover .icon {
+  transform: scale(1.12) rotate(4deg);
+}
+
+.bed h3 {
+  font-size: 1.5rem;
+  margin-bottom: 6px;
+}
+
+.bed p {
+  font-size: 0.94rem;
+  color: var(--ink-soft);
+  margin: 0 0 14px;
+}
+
+.bed .count {
+  font-family: var(--font-script);
+  font-size: 1.15rem;
+  color: var(--koubai);
+}
+
+.bed.pink   { background: linear-gradient(180deg, #fff 0%, #fdf1ef 100%); }
+.bed.sage   { background: linear-gradient(180deg, #fff 0%, #f2f4ec 100%); }
+.bed.deep   { background: linear-gradient(180deg, #fff 0%, #eef1e6 100%); }
+.bed.fog    { background: linear-gradient(180deg, #fff 0%, #f6f1ea 100%); }
+.bed.mauve  { background: linear-gradient(180deg, #fff 0%, #f3ede3 100%); }
+
+/* ---------------- Garden scene divider ---------------- */
+
+.scene {
+  position: relative;
+  height: 300px;
+  margin: 0 0 20px;
+  overflow: hidden;
+}
+
+.scene::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 46px;
+  background: linear-gradient(to bottom, var(--cream), transparent);
+  z-index: 3;
+  pointer-events: none;
+}
+
+.scene svg {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.scene .caption {
+  position: relative;
+  z-index: 2;
+  text-align: center;
+  padding-top: 34px;
+  font-family: var(--font-script);
+  font-size: 1.5rem;
+  color: var(--soldier);
+}
+
+/* ---------------- Footer ---------------- */
+
+.garden-footer {
+  text-align: center;
+  padding: 50px 20px 60px;
+  color: var(--ink-soft);
+  font-size: 0.92rem;
+  border-top: 1px solid rgba(146, 142, 94, 0.25);
+}
+
+.garden-footer .sig {
+  font-family: var(--font-script);
+  font-size: 1.3rem;
+  color: var(--koubai);
+  display: block;
+  margin-bottom: 6px;
+}
+
+.leaf-divider {
+  display: flex;
+  justify-content: center;
+  margin: 8px 0 18px;
+}
+
+/* ============================================================
+   Single "plant" page
+   ============================================================ */
+
+.plant-header {
+  padding: 60px 0 40px;
+  text-align: center;
+  border-bottom: 1px solid rgba(146, 142, 94, 0.2);
+  margin-bottom: 50px;
+}
+
+.plant-header .icon {
+  display: block;
+  width: 56px;
+  height: 56px;
+  margin: 0 auto 14px;
+}
+
+.breadcrumb {
+  display: inline-block;
+  margin-bottom: 26px;
+  font-size: 0.9rem;
+  text-decoration: none;
+  color: var(--ink-soft);
+}
+
+.breadcrumb:hover {
+  color: var(--koubai);
+}
+
+.plant-header h1 {
+  font-size: clamp(2.1rem, 5vw, 3rem);
+}
+
+.plant-meta {
+  color: var(--ink-soft);
+  font-size: 0.92rem;
+}
+
+.tag {
+  display: inline-block;
+  background: rgba(167, 172, 134, 0.22);
+  color: var(--soldier);
+  border-radius: 20px;
+  padding: 3px 14px;
+  font-size: 0.82rem;
+  margin: 0 4px;
+}
+
+.plant-body {
+  max-width: 640px;
+  margin: 0 auto 70px;
+  font-size: 1.08rem;
+}
+
+.plant-body p {
+  margin-bottom: 1.3em;
+}
+
+.plant-body h2 {
+  margin-top: 1.6em;
+  font-size: 1.5rem;
+}
+
+.plant-body blockquote {
+  border-left: 3px solid var(--berry-deep);
+  margin: 1.6em 0;
+  padding: 4px 22px;
+  font-style: italic;
+  color: var(--ink-soft);
+}
+
+.recipe-list {
+  background: var(--paper);
+  border-radius: 20px;
+  padding: 24px 28px;
+  box-shadow: var(--shadow-soft);
+  margin: 1.6em 0;
+}
+
+.recipe-list h3 {
+  margin-top: 0;
+  font-size: 1.15rem;
+}
+
+.gallery-frame {
+  background: var(--paper);
+  padding: 14px;
+  border-radius: 4px;
+  box-shadow: var(--shadow-soft);
+  transform: rotate(-1.2deg);
+  margin: 1.8em auto;
+  max-width: 420px;
+}
+
+.gallery-frame .swatch {
+  height: 240px;
+  border-radius: 2px;
+  background: linear-gradient(135deg, var(--berry), var(--sage));
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: rgba(74,67,49,0.5);
+  font-family: var(--font-script);
+  font-size: 1.3rem;
+}
+
+.gallery-frame figcaption {
+  text-align: center;
+  font-family: var(--font-script);
+  font-size: 1.1rem;
+  margin-top: 10px;
+  color: var(--ink-soft);
+}
+
+.related {
+  max-width: 640px;
+  margin: 0 auto 80px;
+  text-align: center;
+}
+
+.related h3 {
+  font-family: var(--font-script);
+  font-weight: 400;
+  color: var(--ink-soft);
+  font-size: 1.3rem;
+}
+
+.related-links {
+  display: flex;
+  gap: 14px;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.related-links a {
+  text-decoration: none;
+  background: var(--paper);
+  padding: 8px 18px;
+  border-radius: 16px;
+  box-shadow: var(--shadow-soft);
+  font-size: 0.92rem;
+  color: var(--soldier);
+}
+
+.related-links a:hover {
+  color: var(--koubai);
+}
+
+/* ---------------- Reveal on scroll ---------------- */
+
+.reveal {
+  transition: opacity 0.7s ease, transform 0.7s ease;
+}
+
+.js .reveal {
+  opacity: 0;
+  transform: translateY(18px);
+}
+
+.reveal.in-view {
+  opacity: 1;
+  transform: none;
+}
+
+/* ---------------- Responsive ---------------- */
+
+@media (max-width: 640px) {
+  .garden-nav ul {
+    gap: 14px;
+    font-size: 0.85rem;
+  }
+  .hero {
+    padding-top: 110px;
+  }
+  .wisteria-row svg {
+    width: 60px;
+  }
+  .scene {
+    height: 190px;
+  }
+}
